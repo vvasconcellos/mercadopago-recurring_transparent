@@ -5,18 +5,18 @@ error_reporting(E_ALL);
 
 require_once "lib/mercadopago.php";
 
-$mp = new MP("Set your Access Token Long Live");
+$mp = new MP("Set your access token long live");
 
 $email_buyer = "test_user_28757719@testuser.com";
 
 $payment_preference = array(
-    "token"=> $_REQUEST['card_token_id'],
+    "token"=> $_REQUEST['token'],
     "installments"=> 1,
     "transaction_amount"=> round((float)$_REQUEST['amount'],2),
     "external_reference"=> "order code 1234xxxx",
     "binary_mode" => true,
     "description"=> "Teste payments v1",
-    "payment_method_id"=> $_REQUEST['paymentMethod'],
+    "payment_method_id"=> $_REQUEST['paymentMethodId'],
     "statement_descriptor" => "*MEUTESTE",
     "binary_mode" => true , 
     "payer"=> array(
@@ -94,7 +94,7 @@ if (!isset($id_user)){
 
 echo "<h3> ==== Create card ===== (Save in your datamodel) </h3>";
 
-$card_preference = array("token"=>$_REQUEST['card_token_id']);
+$card_preference = array("token"=>$_REQUEST['token']);
 $create_card = $mp->post("/v1/customers/$id_user/cards",$card_preference);
 
 echo "<pre>";

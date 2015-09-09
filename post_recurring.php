@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 require_once "lib/mercadopago.php";
 
-$mp = new MP("Set your Access Token Long Live");
+$mp = new MP("Set your access token long live");
 
 $public_key = "Set your public key";
 
